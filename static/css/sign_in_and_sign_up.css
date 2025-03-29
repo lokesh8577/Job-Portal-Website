@@ -1,0 +1,112 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #7091E6; /* Light blue background */
+    color: #FFFFFF; /* White text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Heading */
+  h1 {
+    text-align: center;
+    color: #FFFFFF; /* White text */
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+  
+  /* Form Container */
+  form {
+    background-color: #3D52A0; /* Dark blue background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  /* Input Fields */
+  form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #EDE8F5; /* Light gray background */
+    color: #3D52A0; /* Dark blue text */
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  form input:focus {
+    outline: none;
+    border: 2px solid #7091E6; /* Light blue border on focus */
+    box-shadow: 0 0 0 0.2rem rgba(112, 145, 230, 0.25); /* Subtle glow */
+  }
+  
+  /* Button */
+  form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFFFFF; /* White text */
+    background-color: #7091E6; /* Light blue */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  form button:hover {
+    background-color: #3D52A0; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    form {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 2rem;
+    }
+  
+    form button, form input {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  }
+  
+  /* General Text Styles */
+p {
+    
+    font-size: 1rem; /* Standard font size */
+    color: #FFFFFF; /* White text */
+    margin-top: 20px;
+    text-align: center; /* Center-align text */
+  }
+  
+  /* Button Styles */
+
+  /* Primary Button Specific Styles */
+  .login_link {
+    color: #EDE8F5;
+    text-decoration: underline;
+  }
+  
+  .login_link:hover {
+    color: #47b2e4;
+    text-decoration: underline;
+  }
+  
+  .login_link_store{
+    margin-top: 20px;
+  }

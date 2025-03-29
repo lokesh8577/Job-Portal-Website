@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>About Us</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+    </head>
+
+    <body>
+
+      <header class="header">
+        <nav class="navbar">
+          <h2 class="logo"><a href="{{ url_for('home') }}">SuJob</a></h2>
+          <input type="checkbox" id="menu-toggle" />
+          <label for="menu-toggle" id="hamburger-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+              <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </label>
+          <ul class="links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('jobs') }}">Browse Jobs</a></li>
+            <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+          </ul>
+          <div class="buttons">
+            {% if session['user_id'] %}
+            <!-- User is logged in -->
+            <div class="user-avatar">
+              <img src="{{ url_for('static', filename=session['avatar']) }}" alt="User Avatar" id="avatar-btn" onclick="Toggle_show()" />
+              <div class="dropdown" id="avatar-dropdown" style="display: none;">
+                <img src="{{ url_for('static', filename=session['avatar']) }}" alt="User Avatar" class="dropdown-avatar" />
+                <p><strong>Username:</strong> {{ session['username'] }}</p>
+                <p><strong>Email:</strong> {{ session['email'] }}</p>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+              </div>
+            </div>
+            
+            {% else %}
+            <!-- User is not logged in -->
+            <a href="{{ url_for('login') }}" class="signin">Sign In</a>
+            <a href="{{ url_for('signup') }}" class="signup">Sign Up</a>
+            {% endif %}
+          </div>
+        </nav>
+      </header>
+        <div class="content_outer">
+          <div class="contact-container">
+            <h1 class="contact-title">&bull; Keep in Touch &bull;</h1>
+            <div class="contact-underline"></div>
+            <div class="contact-icon-wrapper">
+              <svg class="contact-icon" viewBox="0 0 145.192 145.192">
+                <path d="M126.82,32.694c-2.804,0-5.08,2.273-5.08,5.075v2.721c-1.462,0-2.646,1.185-2.646,2.647v1.995    c0,1.585,1.286,2.873,2.874,2.873h20.577c1.462,0,2.646-1.185,2.646-2.647v-3.041c0-1.009-0.816-1.825-1.823-1.825v-2.722    c0-2.802-2.276-5.075-5.079-5.075h-1.985v-3.829c0-3.816-3.095-6.912-6.913-6.912h-0.589h-20.45c0-2.67-2.164-4.835-4.833-4.835    H56.843c-2.67,0-4.835,2.165-4.835,4.835H34.356v-3.384h-9.563v3.384v1.178h-7.061v1.416c-2.67,0.27-10.17,1.424-13.882,5.972    c-1.773,2.17-2.44,4.791-1.983,7.793c0.463,3.043,1.271,6.346,2.128,9.841c2.354,9.616,5.024,20.515,0.549,28.077    C2.647,79.44-3.125,90.589,2.201,99.547c4.123,6.935,13.701,10.44,28.5,10.44c1.186,0,2.405-0.023,3.658-0.068v9.028h-0.296    c-2.516,0-4.558,2.039-4.558,4.558v4.566h100.04v-4.564c0-2.519-2.039-4.558-4.558-4.558h-0.297V84.631h0.297    c2.519,0,4.558-2.037,4.558-4.556v-0.009c0-2.516-2.039-4.556-4.556-4.556l-36.786-0.009V61.973c0-2.193-1.777-3.971-3.972-3.971    v-4.711h0.456c1.629,0,2.952-1.32,2.952-2.949h14.227V34.459h1.658c2.672,0,4.834-2.165,4.834-4.834h20.45v3.069H126.82z"></path>
+                <path d="M70.865,101.78c0,4.774,3.886,8.657,8.66,8.657c4.774,0,8.657-3.883,8.657-8.657c0-4.773-3.883-8.656-8.657-8.656    C74.751,93.124,70.865,97.006,70.865,101.78z"></path>
+              </svg>
+            </div>
+            <form action="#" method="post" class="contact-form">
+              <div class="contact-name">
+                <label for="name" class="contact-name-label"></label>
+                <input type="text" placeholder="My name is" name="name" class="contact-name-input" required>
+              </div>
+              <div class="contact-email">
+                <label for="email" class="contact-email-label"></label>
+                <input type="email" placeholder="My e-mail is" name="email" class="contact-email-input" required>
+              </div>
+              <div class="contact-telephone">
+                <label for="telephone" class="contact-telephone-label"></label>
+                <input type="text" placeholder="My number is" name="telephone" class="contact-telephone-input" required>
+              </div>
+              <div class="contact-subject">
+                <label for="subject" class="contact-subject-label"></label>
+                <select name="subject" class="contact-subject-input" required>
+                    <option value="" disabled hidden selected>Select a subject</option>
+                    <option value="project">I'd like to start a project</option>
+                    <option value="question">I'd like to ask a question</option>
+                    <option value="proposal">I'd like to make a proposal</option>
+                    <option value="jobInquiry">I'm inquiring about a job</option>
+                    <option value="feedback">I'd like to provide feedback</option>
+                    <option value="support">I need support or assistance</option>
+                </select>
+              </div>
+              <div class="contact-message">
+                <label for="message" class="contact-message-label"></label>
+                <textarea name="message" placeholder="I'd like to chat about" class="contact-message-input" cols="30" rows="5" required></textarea>
+              </div>
+              <div class="contact-submit">
+                <input type="submit" value="Send Message" class="contact-submit-button" />
+              </div>
+            </form>
+          </div>
+        </div>
+          
+        
+      
+          <footer class="footer text-white py-5">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="h5 mb-3">Info</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Compressions</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Customers</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Service</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Collection</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="h5 mb-3">Explore</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Free Designs</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Latest Designs</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Themes</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Popular Designs</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Art Skills</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="h5 mb-3">Legal</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Customer Agreement</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">GDPR</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Security</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Media Kit</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="h5 mb-3">Newsletter</h4>
+                        <p class="text-white-50 mb-3">
+                            Subscribe to our newsletter for job updates and career tips.
+                        </p>
+                        <form class="mb-3">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Your email" required>
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                        <div class="social-icons">
+                            <a href="#" ><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" ><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4 bg-secondary">
+                <div class="text-center text-white-50">
+                    <p class="mb-0">&copy; 2023 SuJob. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <script src="/static/js/scripts.js"></script>
+    </body>
+
+</html>

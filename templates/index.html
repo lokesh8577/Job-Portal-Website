@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SuJob</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+          <header class="header">
+            <nav class="navbar">
+              <h2 class="logo"><a href="{{ url_for('home') }}">SuJob</a></h2>
+              <input type="checkbox" id="menu-toggle" />
+              <label for="menu-toggle" id="hamburger-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                  <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </label>
+              <ul class="links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('jobs') }}">Browse Jobs</a></li>
+                <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+              </ul>
+              <div class="buttons">
+                {% if session['user_id'] %}
+                <!-- User is logged in -->
+                <div class="user-avatar">
+                  <img src="{{ url_for('static', filename=session['avatar']) }}" alt="User Avatar" id="avatar-btn" onclick="Toggle_show()" />
+                  <div class="dropdown" id="avatar-dropdown" style="display: none;">
+                    <img src="{{ url_for('static', filename=session['avatar']) }}" alt="User Avatar" class="dropdown-avatar" />
+                    <p><strong>Username:</strong> {{ session['username'] }}</p>
+                    <p><strong>Email:</strong> {{ session['email'] }}</p>
+                    <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+                  </div>
+                </div>
+                
+                {% else %}
+                <!-- User is not logged in -->
+                <a href="{{ url_for('login') }}" class="signin">Sign In</a>
+                <a href="{{ url_for('signup') }}" class="signup">Sign Up</a>
+                {% endif %}
+              </div>
+            </nav>
+          </header>
+          <section class="hero-section">
+            <div class="hero">
+              <h2>Your Dream Job Awaits</h2>
+              <p>
+                Discover endless career opportunities in top companies. Build your future 
+                with our platform by connecting with the right employers and taking the 
+                next step in your career journey.
+              </p>
+              <div class="buttons">
+                <a href="./jobs" class="join">Explore Jobs</a>
+                <a href="./contact_us" class="learn">Contact Us to Learn More</a>
+
+              </div>
+            </div>
+            <div class="img">
+              <img src="/static/images/job_portal_hero.png" alt="Job Opportunities" />
+            </div>
+          </section>
+          
+
+    
+          <section class="features-section">
+            <div class="row_features">
+              <h1 class="features-title">-:Why Choose Us:-</h1>
+            </div>
+          
+            <div class="row_features">
+              <div class="column_features">
+                <div class="card_features">
+                  <div class="icon_features">
+                    <i class="fas fa-briefcase"></i>
+                  </div>
+                  <h3 class="feature-heading">Vast Job Listings</h3>
+                  <p class="feature-description">
+                    Explore thousands of job opportunities across various industries and
+                    roles, tailored to match your skills and career goals.
+                  </p>
+                </div>
+              </div>
+          
+              <div class="column_features">
+                <div class="card_features">
+                  <div class="icon_features">
+                    <i class="fas fa-lock"></i>
+                  </div>
+                  <h3 class="feature-heading">Data Privacy</h3>
+                  <p class="feature-description">
+                    Your personal data is safe with us. We prioritize your privacy and
+                    ensure secure handling of your information.
+                  </p>
+                </div>
+              </div>
+          
+              <div class="column_features">
+                <div class="card_features">
+                  <div class="icon_features">
+                    <i class="fas fa-comments"></i>
+                  </div>
+                  <h3 class="feature-heading">Career Guidance</h3>
+                  <p class="feature-description">
+                    Get expert advice and tips to ace your interviews, build impressive
+                    resumes, and achieve your professional goals.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+           
+
+        <section class="our-webcoderskull padding-lg">
+            <div class="container">
+              <div class="row heading heading-icon">
+                  <h2>Meet Our People</h2>
+              </div>
+              <ul class="row">
+                <li class="col-12 col-md-6 col-lg-3">
+                    <div class="cnt-block equal-hight" style="height: 349px;">
+                      <figure><img src="/static/images/emp1.webp" class="img-responsive" alt=""></figure>
+                      <h3><a href="http://www.webcoderskull.com/">John Do</a></h3>
+                      <p>Software Engineer</p>
+                      <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div>
+                </li>
+                <li class="col-12 col-md-6 col-lg-3">
+                    <div class="cnt-block equal-hight" style="height: 349px;">
+                      <figure><img src="/static/images/emp2.webp" class="img-responsive" alt=""></figure>
+                      <h3><a href="#">Jane Smith </a></h3>
+                      <p>Marketing Specialist</p>
+                      <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div>
+                </li>
+                <li class="col-12 col-md-6 col-lg-3">
+                    <div class="cnt-block equal-hight" style="height: 349px;">
+                      <figure><img src="/static/images/emp3.webp" class="img-responsive" alt=""></figure>
+                      <h3><a href="http://www.webcoderskull.com/">Samuel Lee </a></h3>
+                      <p>Data Analyst</p>
+                      <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div>
+                 </li>
+                <li class="col-12 col-md-6 col-lg-3">
+                    <div class="cnt-block equal-hight" style="height: 349px;">
+                      <figure><img src="/static/images/emp4.webp" class="img-responsive" alt=""></figure>
+                      <h3><a href="http://www.webcoderskull.com/">Emily Davis </a></h3>
+                      <p>HR Manager</p>
+                      <ul class="follow-us clearfix">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                      </ul>
+                    </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        <!-- Footer  Section-->
+        <footer class="footer text-white py-5">
+          <div class="container">
+              <div class="row g-4">
+                  <div class="col-lg-3 col-md-6">
+                      <h4 class="h5 mb-3">Info</h4>
+                      <ul class="list-unstyled">
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">About Us</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Compressions</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Customers</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Service</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Collection</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                      <h4 class="h5 mb-3">Explore</h4>
+                      <ul class="list-unstyled">
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Free Designs</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Latest Designs</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Themes</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Popular Designs</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Art Skills</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                      <h4 class="h5 mb-3">Legal</h4>
+                      <ul class="list-unstyled">
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Customer Agreement</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">GDPR</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Security</a></li>
+                          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Media Kit</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-3 col-md-6">
+                      <h4 class="h5 mb-3">Newsletter</h4>
+                      <p class="text-white-50 mb-3">
+                          Subscribe to our newsletter for job updates and career tips.
+                      </p>
+                      <form class="mb-3">
+                          <div class="input-group">
+                              <input type="email" class="form-control" placeholder="Your email" required>
+                              <button class="btn btn-primary" type="submit">Subscribe</button>
+                          </div>
+                      </form>
+                      <div class="social-icons">
+                          <a href="#" ><i class="fab fa-facebook-f"></i></a>
+                          <a href="#"><i class="fab fa-twitter"></i></a>
+                          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                          <a href="#" ><i class="fab fa-github"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <hr class="my-4 bg-secondary">
+              <div class="text-center text-white-50">
+                  <p class="mb-0">&copy; 2023 SuJob. All rights reserved.</p>
+              </div>
+          </div>
+      </footer>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+        <script src="/static/js/scripts.js" defer></script>
+
+    </body>
+
+</html>

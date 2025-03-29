@@ -1,0 +1,939 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  /* background: linear-gradient(to bottom, red 23%, yellow 95%); */
+}
+
+/* navbar styling*/ 
+header {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 15px;
+  background-color: #3D52A0;
+  height: 60px;
+}
+
+.navbar .logo a {
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #EDE8F5;
+  padding-left: 50px;
+}
+
+.navbar .links {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 35px;
+}
+
+.navbar .links a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #EDE8F5;
+  padding: 10px 0;
+  transition: 0.2s ease;
+}
+
+.navbar .links a:hover {
+  color: #47b2e4;
+  text-decoration: underline;
+}
+
+.navbar .buttons a {
+  text-decoration: none;
+  color: #EDE8F5;
+  font-size: 1rem;
+  padding: 15px 0;
+  transition: 0.2s ease;
+  margin-right: 30px;
+  background-color: #3D52A0;
+}
+
+.navbar .buttons a:not(:last-child) {
+  margin-right: 30px;
+}
+
+.navbar .buttons .signin:hover {
+  text-decoration: underline;
+  color: #47b2e4;
+}
+
+.navbar .buttons .signup {
+  border: 1px solid #EDE8F5;
+  padding: 10px 20px;
+  border-radius: 0.375rem;
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.navbar .buttons .signup:hover {
+  background-color: #47b2e4;
+  color: #EDE8F5;
+}
+
+
+
+/* Avatar and Dropdown Styling */
+.navbar .user-avatar {
+  margin-right: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navbar .user-avatar img {
+  border : 2px solid #3D52A0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: 0.2s ease;
+}
+
+.navbar .user-avatar img:hover {
+  border-color: #47b2e4;
+}
+.navbar .user-avatar .dropdown {
+  position: absolute;
+  top: 60px; /* Below the navbar */
+  right: 0;
+  background-color: #3D52A0;
+  border: 1px solid #EDE8F5;
+  border-radius: 8px; /* Slightly larger border radius for modern feel */
+  padding: 20px;
+  min-width: 220px; /* Slightly wider for better content spacing */
+  text-align: center;
+  display: none; /* Controlled via JS */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow for better depth */
+  z-index: 1000;
+}
+
+/* Dropdown Avatar */
+.navbar .user-avatar .dropdown img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 2px solid #EDE8F5;
+}
+
+/* Dropdown Text */
+.navbar .user-avatar .dropdown p {
+  margin: 8px 0; /* Increased spacing for better readability */
+  color: #EDE8F5;
+  font-size: 14px; /* Balanced font size */
+  font-weight: 500; /* Slightly bolder text */
+}
+
+.navbar .user-avatar .dropdown p strong {
+  color: #ede8f5; /* Highlighted labels */
+  font-weight: 700; /* Bold labels for emphasis */
+}
+
+/* Logout Button */
+.navbar .user-avatar .dropdown a.logout-btn {
+  display: block;
+  margin-top: 15px;
+  margin-left: 15%;
+  padding: 10px 15px;
+  text-decoration: underline;
+  color: #EDE8F5;
+  font-weight: bold;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  background-color: #3D52A0;
+  transition: all 0.2s ease;
+}
+
+.navbar .user-avatar .dropdown a.logout-btn:hover {
+  color: #FFFFFF;
+  background-color: #47b2e4;
+  border-color: #47b2e4;
+  transform: translateY(-2px); /* Hover lift effect */
+}
+
+
+/*Hero styling*/
+
+section.hero-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  padding: 0 15px;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  background: linear-gradient(135deg, #3D52A0, #7091E6);
+
+}
+
+.hero-section .hero {
+  max-width: 50%;
+  color: #fff;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #EDE8F5;
+}
+
+.hero-section .img img {
+  width: 517px;
+}
+
+.hero-section .buttons {
+  margin-top: 40px;
+}
+
+.hero-section .buttons a {
+  text-decoration: none;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  transition: 0.2s ease;
+  display: inline-block;
+}
+
+.hero-section .buttons a:not(:last-child) {
+  margin-right: 15px;
+}
+
+.buttons .join {
+  background-color: #47b2e4;
+}
+
+.hero-section .buttons .learn {
+  border: 1px solid #fff;
+  border-radius: 0.375rem;
+}
+
+.hero-section .buttons a:hover {
+  background-color: #47b2e4;
+}
+
+/* Hamburger menu styles */
+#menu-toggle {
+  display: none;
+}
+
+#hamburger-btn {
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  order: 1;
+}
+
+
+
+/*features section*/
+.features-section {
+  border-top: 2px solid #afdde5;
+  height: 100vh;
+  background: linear-gradient(to bottom, #ede8f5, #8697c4); 
+  padding: 20px; /* Add padding for spacing */
+  display: flex;
+  flex-direction: column; /* Stack heading on top of the row */
+  align-items: center; /* Center content horizontally */
+}
+
+.row_features {
+  display: flex;
+  flex-wrap: nowrap; /* Keep all cards in one row */
+  gap: 70px; /* Increase space between cards */
+  overflow-x: auto; /* Enable horizontal scrolling if needed */
+  margin-top: 40px; /* Increase spacing below the heading */
+  justify-content: center; /* Center cards within the row */
+}
+
+.row_features h1 {
+  text-align: center;
+  margin: 0.6em 0;
+  font-size: 3.75em;
+  font-weight: 600;
+  color: #3D52A0;
+}
+
+.row_features .column_features {
+  flex: 0 0 auto; /* Prevent columns from resizing */
+}
+
+.row_features .column_features .card_features {
+  width: 350px; /* Increased width for cards */
+  height: 450px; /* Increased height for cards */
+  padding: 2.5em 1.5em; /* Adjust padding for larger size */
+  text-align: center;
+  background-color: #8697C4;
+  background-repeat: no-repeat;
+  background-position: 0 0.62em;
+  cursor: pointer;
+  box-shadow: 0 0 2.5em rgba(0, 0, 0, 0.15);
+  transition: 0.5s;
+  color: #EDE8F5;
+  z-index: 1;
+  border-radius: 25px; /* More rounded corners */
+}
+
+.row_features .column_features .card_features:hover {
+  background-position: 0;
+}
+
+.row_features .column_features .card_features .icon_features {
+  font-size: 3em; /* Larger icon size */
+  height: 3em;
+  width: 3em;
+  margin: auto;
+  background: #EDE8F5;
+  color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.row_features .column_features .card_features .icon_features::before {
+  position: absolute;
+  content: "";
+  height: 2em;
+  width: 2em;
+  border: 0.15em solid #EDE8F5;
+  transition: 0.5s;
+  border-radius: 50%;
+}
+
+.row_features .column_features .card_features:hover .icon_features::before {
+  height: 3em;
+  width: 3em;
+}
+
+.row_features .column_features .card_features h3 {
+  font-size: 1.5em; /* Larger font size for headings */
+  font-weight: 600;
+  margin: 1em 0 1.4em 0;
+  letter-spacing: 0.3px;
+  color: #3d53a0;
+}
+
+.row_features .column_features .card_features p {
+  line-height: 1.8em; /* Adjust line height for larger cards */
+  color: #625a71;
+  overflow: hidden; /* Ensure content stays within the fixed height */
+  text-overflow: ellipsis;
+}
+.row_features .column_features .card_features:hover .icon_features {
+  background: #47b2e4; /* Icon background changes on hover */
+  transform: rotate(360deg); /* Rotate icon */
+  transition: transform 0.5s ease-in-out, background 0.3s ease;
+}
+
+
+/*Brand section*/
+.trust {
+  border-top: 2px solid #afdde5;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(90deg, #397ef6, #8697C4); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+
+}
+
+
+.trust h2 {
+  font-size: 2rem;
+  color: #FFFFFF; /* White heading color */
+  margin-bottom: 1rem;
+}
+
+.trust p {
+  font-size: 1.2rem;
+  color: #EDE8F5; /* Light gray color for text */
+  margin-bottom: 2rem;
+}
+
+.trust .t-box {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem; /* Space between images */
+  padding: 2rem;
+  
+
+}
+
+.trust .t-box img {
+  max-width: 120px; /* Resize images for uniformity */
+  height: auto;
+  border: 2px solid #7091E6; /* Border matching the theme */
+  border-radius: 8px; /* Rounded corners for the images */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.trust .t-box img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/*User styling*/
+
+.row.heading h2 {
+  color: #3D52A0; /* Deep blue from the palette */
+  font-size: 52.52px;
+  line-height: 95px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 40px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.heading.heading-icon {
+  display: block;
+}
+
+.padding-lg {
+  border-top: 2px solid #afdde5;
+  display: block;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.practice-area.padding-lg {
+  padding-bottom: 55px;
+  padding-top: 55px;
+}
+
+.practice-area .inner {
+  border: 1px solid #8697C4; /* Soft gray-blue border */
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 40px 25px;
+  background-color: #EDE8F5; /* Light lavender background */
+  border-radius: 8px;
+}
+
+.our-webcoderskull .cnt-block:hover {
+  box-shadow: 0px 0px 10px rgba(112, 145, 230, 0.6); /* Light blue shadow */
+  border: 0;
+}
+
+.practice-area .inner h3 {
+  color: #3D52A0; /* Deep blue text */
+  font-size: 24px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  padding: 10px 0;
+}
+
+.practice-area .inner p {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #8697C4; /* Gray-blue for descriptions */
+}
+
+.practice-area .inner img {
+  display: inline-block;
+}
+
+.our-webcoderskull {
+  background-color: #EDE8F5; /* Light lavender background */
+}
+
+.our-webcoderskull .cnt-block {
+  float: left;
+  width: 100%;
+  background: #ADBBD4; /* Soft blue background */
+  padding: 30px 20px;
+  text-align: center;
+  border: 2px solid #7091E6; /* Soft blue border */
+  margin: 0 0 28px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.our-webcoderskull .cnt-block:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 15px rgba(112, 145, 230, 0.8); /* Glowing blue shadow */
+}
+
+.our-webcoderskull .cnt-block figure {
+  width: 148px;
+  height: 148px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.our-webcoderskull .cnt-block img {
+  width: 148px;
+  height: 148px;
+  border-radius: 100%;
+  border: 3px solid #3D52A0; /* Deep blue border for images */
+}
+
+.our-webcoderskull .cnt-block h3 {
+  color: #3D52A0; /* Deep blue headings */
+  font-size: 20px;
+  font-weight: 500;
+  padding: 6px 0;
+  text-transform: uppercase;
+}
+
+.our-webcoderskull .cnt-block h3 a {
+  text-decoration: none;
+  color: #3D52A0;
+}
+
+.our-webcoderskull .cnt-block h3 a:hover {
+  color: #7091E6; /* Soft blue on hover */
+}
+
+.our-webcoderskull .cnt-block p {
+  color: #8697C4; /* Gray-blue text */
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.our-webcoderskull .cnt-block .follow-us {
+  margin: 20px 0 0;
+}
+
+.our-webcoderskull .cnt-block .follow-us li {
+  display: inline-block;
+  width: auto;
+  margin: 0 5px;
+}
+
+.our-webcoderskull .cnt-block .follow-us li .fa {
+  font-size: 24px;
+  color: #7091E6;
+}
+
+.our-webcoderskull .cnt-block .follow-us li .fa:hover {
+  color: #3D52A0; /* Deep blue on hover */
+}
+
+
+/*contact us styling*/
+.content_outer{
+  height: 100vh;
+  background: linear-gradient(to bottom, #ede8f5, #8697c4);
+  padding-top: 50px;
+}
+.contact-container {
+ /* Icon color */
+  max-width: 768px;
+  border-radius: 10px;
+
+  margin: 60px auto;
+  padding-top: 20px;
+  padding: 20px;
+  position: relative;
+  background-color: #8697C4; /* Light background color */
+}
+
+.contact-title {
+  color: #FFFFFF; /* Text color */
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 7px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.contact-underline {
+  border-bottom: solid 2px #FFFFFF; /* Icon color */
+  margin: -0.512em auto 20px;
+  width: 80px;
+}
+
+.contact-icon-wrapper {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.contact-icon {
+  display: inline-block;
+  fill: #FFFFFF; /* Icon color */
+  height: 50px;
+  width: 50px;
+}
+
+.contact-form {
+  margin-top: 20px;
+}
+
+.contact-name-input,
+.contact-email-input,
+.contact-telephone-input,
+.contact-subject-input,
+.contact-message-input {
+  background: none;
+  border: none;
+  border-bottom: solid 2px #EDE8F5; /* Icon color */
+  color: #FFFFFF; /* Text color */
+  font-size: 1em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 0 0 0.875em 0;
+  text-transform: uppercase;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+.contact-name-input::placeholder,
+.contact-email-input::placeholder,
+.contact-telephone-input::placeholder,
+.contact-message-input::placeholder{
+  color: #FFFFFF;
+}
+
+.contact-name-input:focus,
+.contact-email-input:focus,
+.contact-telephone-input:focus,
+.contact-subject-input:focus,
+.contact-message-input:focus {
+  outline: none;
+}
+
+.contact-message-input {
+  line-height: 1.5;
+  height: 150px;
+  resize: none;
+}
+
+.contact-submit-button {
+  background: none;
+  border: 1px solid #EDE8F5; /* Icon color */
+  color: #FFFFFF; /* Icon color */
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 0.875em;
+  font-weight: bold;
+  outline: none;
+  padding: 15px 30px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-submit-button:hover {
+  background-color: #47b2e4;
+  color: #EDE8F5;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-container {
+    margin: 20px auto;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contact-title {
+    font-size: 26px;
+  }
+
+  .contact-underline {
+    width: 68px;
+  }
+
+  .contact-submit-button {
+    padding: 15px 25px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .contact-title {
+    font-size: 18px;
+  }
+
+  .contact-icon {
+    height: 35px;
+    width: 35px;
+  }
+
+  .contact-underline {
+    width: 53px;
+  }
+
+  .contact-name-input,
+  .contact-email-input,
+  .contact-telephone-input,
+  .contact-subject-input,
+  .contact-message-input {
+    font-size: 0.875em;
+  }
+}
+
+/*footer styling*/
+.footer {
+  border-top: 2px solid #afdde5;
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  background-color: #3D52A0; /* Dark blue for the footer background */
+  margin: 0 auto;
+}
+
+.footer .footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3.5rem;
+  padding: 60px;
+}
+
+.footer-row .footer-col h4 {
+  color: #EDE8F5; /* Light lavender for headings */
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.footer-col .links {
+  margin-top: 20px;
+}
+
+.footer-col .links li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.footer-col .links li a {
+  text-decoration: none;
+  color: #ADB8DA; /* Light blue for links */
+}
+
+.footer-col .links li a:hover {
+  color: #7091E6; /* Hover color for links */
+}
+
+.footer-col p {
+  margin: 20px 0;
+  color: #ADB8DA; /* Light blue for text */
+  max-width: 300px;
+}
+
+.footer-col form {
+  display: flex;
+  gap: 5px;
+}
+.footer .input-group {
+  display: flex;
+  gap: 0.5rem;
+}
+.footer .form-control {
+  background: #8697C4; /* Soft blue input background */
+  border: 1px solid #7091E6;
+  border-radius: 6px;
+  color: #EDE8F5; /* Input text color */
+  padding: 0.5rem;
+}
+
+.footer .form-control::placeholder {
+  color: #D3D3D3; /* Light gray for placeholders */
+}
+
+
+.footer .btn-primary {
+  background-color: #7091E6; /* Blue button background */
+  border: none;
+  border-radius: 6px;
+  color: #FFFFFF; /* White text for button */
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer .btn-primary:hover {
+  background-color: #3D52A0; /* Dark blue on hover */
+}
+.footer .social-icons a {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  color: #ADB8DA; /* Light blue for icons */
+  transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+  color: #7091E6; /* Hover color for icons */
+}
+
+@media (max-width: 768px) {
+  .footer .row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+
+
+/*job card*/
+/* Job Listings Section */
+.job-listings {
+  background: linear-gradient(to bottom, #ede8f5, #8697c4); /* Light blue background */
+  min-height: 70vh; /* Ensures sufficient height for content */
+  padding: 20px; /* Adds space around the section */
+}
+
+/* Job Card Styles */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none; /* Removes default border */
+  border-radius: 10px; /* Smooth corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background-color: #ADBBD4; /* Slightly darker blue for card */
+  overflow: hidden; /* Prevents content from spilling out */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Card Title Styles */
+.card-title {
+  color: #FFFFFF; /* White text */
+  font-weight: 600; /* Slightly bold */
+  font-size: 1.25rem; /* Larger font size */
+  margin-bottom: 0.5rem; /* Space below title */
+}
+
+/* Card Subtitle */
+.card-subtitle {
+  font-size: 0.9rem; /* Slightly smaller font */
+  color: #EDE8F5; /* Soft gray for subtitles */
+}
+
+/* Card Text */
+.card-text {
+  margin-bottom: 0.5rem; /* Space below text */
+  color: #D3D3D3; /* Light gray for readability */
+  font-size: 0.95rem; /* Comfortable font size */
+}
+
+/* Buttons */
+.search_btn {
+  width: 50%;
+}
+
+.btn-primary {
+  border: 1px solid #EDE8F5;
+  padding: 8px 20px; /* Comfortable padding */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 0.95rem; /* Standard font size */
+  background-color: #8697C4; /* Light blue */
+  color: #FFFFFF; /* White text */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.btn-primary:hover {
+  background-color: #47b2e4;
+  color: #EDE8F5;
+}
+
+/* Search Filter Styles */
+.search-filter {
+  background-color: #ADBBD4; /* Dark blue for contrast */
+  border-radius: 8px; /* Smooth corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px; /* Space inside */
+  margin-bottom: 30px; /* Space below filter */
+}
+
+/* Search Filter Labels */
+.search-filter .form-label {
+  font-weight: 600; /* Bold labels */
+  color: #EDE8F5; /* Soft gray text */
+  margin-bottom: 8px; /* Space below labels */
+}
+
+/* Search Filter Input Fields */
+.search-filter .form-control {
+  border: 1px solid #ADBBD4; /* Light gray border for inputs */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 15px; /* Comfortable padding */
+  font-size: 0.95rem; /* Standard font size */
+  background-color: #EDE8F5; /* Very light gray background */
+  color: #3D52A0; /* Dark blue text */
+}
+
+.search-filter .form-control:focus {
+  border-color: #7091E6; /* Blue border on focus */
+  box-shadow: 0 0 0 0.25rem rgba(112, 145, 230, 0.25); /* Subtle blue glow */
+}
+
+.search-filter .btn-primary {
+  height: 42px; /* Uniform height */
+  font-weight: 500; /* Slightly bold */
+  font-size: 0.9rem; /* Standard font size */
+  color: #3D52A0; /* Dark blue text */
+  border: 1px solid #EDE8F5;
+  border-radius: 0.375rem;
+  text-align: center;
+  background-color: #ADBBD4;
+  transition: 0.2s ease;
+}
+
+.search-filter .btn-primary:hover {
+  background-color: #3D52A0; /* Darker blue on hover */
+  color: #FFFFFF; /* White text on hover */
+}
+
+.card-body {
+  background-color: #8697C4; /* Slightly darker blue */
+}
+
+.container h2 {
+  padding-top: 30px;
+  color: #7091E6; /* Light blue */
+}
+
+.input-group input,
+.input-group span {
+  background-color: #8697C4; /* Light gray */
+  color: #3D52A0; /* Dark blue text */
+}
+
+.form-label {
+  background-color: #8697C4; /* Slightly darker blue */
+  color: #FFFFFF; /* White text */
+}
+
