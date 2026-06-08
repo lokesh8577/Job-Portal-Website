@@ -14,9 +14,9 @@ Scss(app, static_dir='static', asset_dir='assets')
 
 # Configure MySQL
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'  # Your MySQL username
-app.config['MYSQL_PASSWORD'] = 'password'  # Your MySQL password (empty if no password)
-app.config['MYSQL_DB'] = 'database name'
+app.config['MYSQL_USER'] = 'root' 
+app.config['MYSQL_PASSWORD'] = '' 
+app.config['MYSQL_DB'] = 'job_portal'
 
 
 mysql = MySQL(app)
@@ -134,8 +134,8 @@ def jobs():
         # Build base API URL
         url = "https://api.adzuna.com/v1/api/jobs/gb/search/1"
         params = {
-            'app_id': 'api id',
-            'app_key': 'api key',
+            'app_id': '99fec87a',
+            'app_key': '8905bef4907c1064be1687c95af949bb',
             'results_per_page': 20
         }
         
