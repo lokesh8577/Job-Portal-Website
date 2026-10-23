@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard | SuJob{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 style="color:#3D52A0;">
+      <i class="fas fa-shield-alt me-2"></i>Admin Dashboard
+    </h2>
+    <span class="badge bg-danger fs-6">Admin Only</span>
+  </div>
+
+  <div class="card shadow-sm mb-4">
+    <div class="card-header" style="background:#3D52A0;color:#fff;">
+      <h5 class="mb-0">All Applications <span class="badge bg-light text-dark">{{ applications|length }}</span></h5>
+    </div>
+    <div class="card-body p-0">
+      {% if applications %}
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead style="background:#EDE8F5;">
+            <tr>
+              <th>ID</th>
+              <th>Applicant</th>
+              <th>Email</th>
+              <th>Job Title</th>
+              <th>Company</th>
+              <th>Applied</th>
+              <th>Current Status</th>
+              <th>Update Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% set status_colors = {
+                'applied':   'secondary',
+                'reviewing': 'info',
+                'interview': 'warning',
+                'offered':   'success',
+                'rejected':  'danger'
+            } %}
+            {% for app in applications %}
+            <tr>
+              <td class="text-muted">#{{ app.id }}</td>
+              <td class="fw-semibold">{{ app.username }}</td>
+              <td class="small text-muted">{{ app.email }}</td>
+              <td>{{ app.job_title }}</td>
+              <td>{{ app.company }}</td>
+              <td class="small text-muted">{{ app.applied_at.strftime('%d %b %Y') }}</td>
+              <td>
+                <span id="appStatusBadge_{{ app.id }}"
+                      class="badge bg-{{ status_colors.get(app.status, 'secondary') }}">
+                  {{ app.status|upper }}
+                </span>
+              </td>
+              <td>
+                <form method="POST"
+                      action="{{ url_for('update_status', app_id=app.id) }}"
+                      class="d-flex gap-1">
+                  <select name="status" class="form-select form-select-sm" style="min-width:120px;">
+                    {% for s in ['applied','reviewing','interview','offered','rejected'] %}
+                    <option value="{{ s }}" {% if app.status == s %}selected{% endif %}>
+                      {{ s|title }}
+                    </option>
+                    {% endfor %}
+                  </select>
+                  <button type="submit" class="btn btn-sm btn-primary">
+                    <i class="fas fa-save"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="text-center py-5 text-muted">
+        <i class="fas fa-inbox fa-3x mb-3"></i>
+        <p>No applications yet.</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <i class="fas fa-info-circle me-2"></i>
+    When you update an application status, the applicant is instantly notified via
+    <strong>Socket.IO</strong> – no page refresh required on their end.
+  </div>
+</div>
+{% endblock %}

@@ -1,34 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    <link rel="stylesheet" href="/static/css/sign_in_and_sign_up.css">
-</head>
-   
-</head>
-<body>
-    {% if error %}
-    <div class="error-toggle">{{ error }}</div>
-    {% endif %}
-    <form method="POST" action="/signup" enctype="multipart/form-data">
-        <h1>Signup</h1>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <br>
-        <label for="Avatar">Avatar</label>
-        <input type="file" name="avatar" id="avatar" accept=".jpg, .png">
-        <br>
-        <button type="submit">Sign Up</button>
-        <div class="login_link_store">
-        <p">Already a user? <a href="./login" class="login_link">Log in</a></p></div>
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Sign Up | SuJob{% endblock %}
+{% block content %}
+<div class="content_outer d-flex align-items-center justify-content-center" style="min-height:100vh;">
+  <div class="card shadow-lg" style="width:100%;max-width:480px;border-radius:16px;overflow:hidden;">
+    <div class="card-header text-center py-4" style="background:#3D52A0;">
+      <h2 class="text-white mb-0"><i class="fas fa-user-plus me-2"></i>Create Account</h2>
+    </div>
+    <div class="card-body p-4">
+      <form method="POST" action="/signup" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" class="form-control" name="username" placeholder="John Doe" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+            <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input type="password" class="form-control" name="password" placeholder="Min. 8 characters" required>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label">Profile Avatar <span class="text-muted">(optional, jpg/png)</span></label>
+          <input type="file" class="form-control" name="avatar" accept=".jpg,.jpeg,.png">
+        </div>
+        <button type="submit" class="btn w-100 py-2 fw-bold"
+                style="background:#3D52A0;color:#fff;border-radius:8px;">
+          Create Account
+        </button>
+      </form>
+      <hr class="my-3">
+      <p class="text-center mb-0">Already have an account?
+        <a href="{{ url_for('login') }}" style="color:#3D52A0;font-weight:600;">Sign In</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

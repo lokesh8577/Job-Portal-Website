@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Profile | SuJob{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+      <div class="card shadow-sm">
+        <div class="card-header text-center py-4" style="background:#3D52A0;color:#fff;">
+          <img src="{{ url_for('static', filename=user.avatar_path or 'images/default-avatar.jpg') }}"
+               alt="Avatar"
+               style="width:80px;height:80px;border-radius:50%;border:3px solid #EDE8F5;margin-bottom:10px;">
+          <h4 class="mb-0">{{ user.username }}</h4>
+          <small class="text-white-50">{{ user.email }} · joined {{ user.created_at.strftime('%B %Y') }}</small>
+        </div>
+        <div class="card-body p-4">
+          <h5 class="mb-3">Edit Profile</h5>
+          <form method="POST" action="{{ url_for('profile') }}" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input type="text" class="form-control" name="username"
+                     value="{{ user.username }}" required>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Profile Avatar</label>
+              <input type="file" class="form-control" name="avatar" accept=".jpg,.jpeg,.png">
+              <div class="form-text">Leave empty to keep current avatar.</div>
+            </div>
+            <button type="submit" class="btn w-100 py-2 fw-bold"
+                    style="background:#3D52A0;color:#fff;border-radius:8px;">
+              Save Changes
+            </button>
+          </form>
+        </div>
+        <div class="card-footer text-muted text-center small">
+          <span class="badge bg-secondary">{{ user.role }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
